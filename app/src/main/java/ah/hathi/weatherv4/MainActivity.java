@@ -32,7 +32,15 @@ public class MainActivity extends AppCompatActivity {
         cityEditText = findViewById(R.id.cityEditText);
         temperatureTextView = findViewById(R.id.temperatureTextView);
 
-
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    getWeather(cityEditText);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }});
 
 
     }
@@ -46,14 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     WeatherResponse weatherResponse = response.body();
                     double temperature = weatherResponse.getTemp();
-                    int humidity = weatherResponse.getHumidity();
-                    Button btn = findViewById(R.id.getWeatherButton);
-                    btn.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            temperatureTextView.setText("Temperature:" + temperature);
-                            humidityTextView.setText("Humidity" + humidity);
-                        }});
+                    int humidity = (int) weatherResponse.getHumidity();
 
                 } else {
                     Toast.makeText(MainActivity.this, "Error: " + response.code(), Toast.LENGTH_SHORT).show();

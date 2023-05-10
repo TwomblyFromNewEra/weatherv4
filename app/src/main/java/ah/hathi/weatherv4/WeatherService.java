@@ -7,14 +7,14 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class WeatherService {
-    private static final String API_KEY = "your_api_key";
+    private static final String API_KEY = "41e9d5063e0f92cba9e17f3f32f092b4";
     private String city;
 
     public WeatherService(String city) {
         this.city = city;
     }
 
-    public WeatherResponse getWeather(String cityName, String apiKey) throws IOException {
+    public WeatherResponse getWeather(String cityName) throws IOException {
         String url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + API_KEY + "&units=metric";
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();

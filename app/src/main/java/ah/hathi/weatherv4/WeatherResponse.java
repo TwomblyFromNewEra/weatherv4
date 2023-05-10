@@ -13,8 +13,7 @@ public class WeatherResponse {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
+    public String allWeather() {
         return "Temperature: " + temperature + "°C\nHumidity: " + humidity + "%\nWind speed: " + windSpeed + " m/s\nDescription: " + description;
     }
 

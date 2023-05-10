@@ -30,7 +30,7 @@ public class WeatherClient {
 
     public void getWeather(String cityName, Callback<WeatherResponse> callback) throws IOException {
         WeatherService service = retrofit.create(WeatherService.class);
-        Call<WeatherResponse> call = (Call<WeatherResponse>) service.getWeather(cityName, API_KEY);
+        Call<WeatherResponse> call = (Call<WeatherResponse>) service.getWeather(cityName);
         call.enqueue(callback);
     }
 }
